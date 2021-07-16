@@ -1,0 +1,28 @@
+{% extends "chat/layout.html" %}
+{% load static %}
+{% block body %}
+<div>
+    <div class="chatbox">
+        <h1>
+            {{username}}
+        </h1>
+    <div class="chatlist">
+    <ul id="chatbox" class="chatscroll">
+        {% for chat in chatbox %}
+            <li class="chatitem"> {{chat.username}}: {{chat.message}} </li>
+        {% endfor %}
+    </ul>
+    </div>
+    <div class="messagediv">
+    <form id="form" method="POST">
+        {% csrf_token %}
+        <input type="text" id="message" class="form-control messagetext">
+    </form>
+    </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'websocket.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,25 @@
+<button class="open-button" onclick="openMenu()">Chat</button>
+<div class="chatmenu" id="chatmenu">
+    <div class="chatmenuscroll">
+        <h1>
+            User List
+        </h1>
+    <ul id="chatbox" class="chatscroll">
+        {% for user in users %}
+            
+            <li><a href="{% url 'username' user %}"> {{user}} </a></li>
+
+        {% endfor %}
+    </ul>
+    </div>
+    <button type="button" class="cancel" onclick="closeMenu()">Close</button>
+</div>
+<script>
+    function openMenu() {
+      document.getElementById("chatmenu").style.display = "flex";
+    }
+    
+    function closeMenu() {
+      document.getElementById("chatmenu").style.display = "none";
+    }
+    </script>
